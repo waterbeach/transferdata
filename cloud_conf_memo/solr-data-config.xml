@@ -1,0 +1,29 @@
+<dataConfig>
+    <dataSource type="JdbcDataSource"
+    driver="com.mysql.jdbc.Driver"
+    url="jdbc:mysql://localhost:3306/ossean_production"
+    user="root"
+    password="123456"
+    batchSize="-1"/>
+    <document>
+        <entity name="relative_memos"
+            query="select id,title,tags,url,url_md5,content,memo_type,type,source,author,author_url,view_num,review_num,view_num_ossean,created_time,extracted_time,updated_time from relative_memos"
+            deltaImportQuery="SELECT id,title,tags,url,url_md5,content,type,memo_type,source,author,author_url,view_num,review_num,view_num_ossean,created_time,extracted_time,updated_time from relative_memos where id='${dih.delta.id}'"
+            deltaQuery="SELECT id FROM relative_memos where  updated_time > '${dataimporter.last_index_time}'">
+            <field column="id" name="id"/>
+            <field column="title" name="title"/>
+            <field column="content" name="content"/>
+            <field column="created_time" name="created_time"/>
+            <field column="memo_type" name="memo_type"/>
+            <field column="tags" name="tags"/>
+            <field column="url" name="url"/>
+            <field column="url_md5" name="url_md5"/>
+            <field column="view_num" name="view_num"/>
+            <field column="source" name="source"/>
+            <field column="review_num" name="review_num"/>
+            <field column="view_num_ossean" name="view_num_ossean"/>
+            <field column="updated_time" name="updated_time"/>
+        </entity>
+    </document>
+</dataConfig>
+

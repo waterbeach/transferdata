@@ -1,0 +1,31 @@
+<dataConfig>
+    <dataSource type="JdbcDataSource"
+    driver="com.mysql.jdbc.Driver"
+    url="jdbc:mysql://localhost:3306/ossean_production"
+    user="root"
+    password="123456"
+    batchSize="-1"/>
+    <document>
+        <entity name="open_source_projects"
+            query="select id,name,tags,url,url_md5,description,language,source,license,type,synonyms,homepage,updated_time,composite_score,created_time from open_source_projects"
+            deltaImportQuery="SELECT id,name,tags,url,url_md5,description,type,language,source,license,synonyms,homepage,updated_time,composite_score,created_time from open_source_projects where id='${dih.delta.id}'"
+            deltaQuery="SELECT id FROM open_source_projects where  updated_time > '${dataimporter.last_index_time}'">
+            <field column="id" name="id"/>
+            <field column="name" name="name"/>
+            <field column="description" name="description"/>
+            <field column="created_time" name="created_time"/>
+            <field column="homepage" name="homepage"/>
+            <field column="tags" name="tags"/>
+            <field column="composite_score" name="composite_score"/>
+            <field column="synonyms" name="synonyms"/>
+            <field column="url" name="url"/>
+            <field column="url_md5" name="url_md5"/>
+            <field column="license" name="license"/>
+            <field column="source" name="source"/>
+            <field column="language" name="language"/>
+            <field column="searchText" name="searchText"/>
+            <field column="updated_time" name="updated_time"/>
+        </entity>
+    </document>
+</dataConfig>
+
