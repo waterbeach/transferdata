@@ -1,0 +1,19 @@
+﻿# Some synonym groups specific to this example
+GB,gib,gigabyte,gigabytes
+MB,mib,megabyte,megabytes
+Television, Televisions, TV, TVs
+#notice we use "gib" instead of "GiB" so any WordDelimiterFilter coming
+#after us won't split it into two words.
+pixima => pixma
+development tools => ide
+#操作 => operating
+operation => operating
+operation system  => operating system
+操作系统  => operating system
+os => operating system
+开发环境  => ide
+development environment => ide
+development tool => ide
+data base => database 
+数据库 => database
+study,studys,studying
